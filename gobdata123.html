@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataGo - Gobernanza de Datos Simplificada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header {
+            width: 100%;
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .solar-system {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            animation: rotate-solar-system 30s infinite linear;
+            position: absolute;
+        }
+
+        .planet {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #b8b8b8, #d0d0d0); /* Plateado */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1c1c1c;
+            font-size: 1.1em;
+            box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .planet:hover {
+            transform: scale(1.1);
+        }
+
+        .sun {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(145deg, #ffd700, #ffcc00); /* Dorado */
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
+            z-index: 10;
+            animation: pulse 1.5s infinite alternate;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Planetary orbits (position fixed for non-moving planets) */
+        .planet:nth-child(1) { top: 10%; left: 50%; }
+        .planet:nth-child(2) { top: 25%; left: 75%; }
+        .planet:nth-child(3) { top: 50%; left: 90%; }
+        .planet:nth-child(4) { top: 75%; left: 75%; }
+        .planet:nth-child(5) { top: 90%; left: 50%; }
+
+        @keyframes rotate-solar-system {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .modal-content {
+            background: linear-gradient(145deg, #333, #555); /* Degradado para el modal */
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Botones CTA */
+        .cta {
+            background: linear-gradient(145deg, #ffd700, #ffcc00);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .cta:hover {
+            background: linear-gradient(145deg, #e6b800, #d6a400);
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenidos a DataGo</h1>
+</header>
+
+<div class="solar-system">
+    <!-- Sol con el nombre "DataGo" -->
+    <div class="sun">
+        DataGo
+    </div>
+
+    <!-- Planetas (Secciones) -->
+    <div class="planet" onclick="openModal('quienSomosModal')">¿Qué es?</div>
+    <div class="planet" onclick="openModal('porQueElegirModal')">¿Por qué elegir?</div>
+    <div class="planet" onclick="openModal('pasosModal')">3 Sencillos Pasos</div>
+    <div class="planet" onclick="openModal('clientesModal')">Clientes</div>
+    <div class="planet" onclick="openModal('gobernanzaModal')">Gobernanza</div>
+</div>
+
+<!-- Modales -->
+<div id="quienSomosModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>¿Qué es DataGo?</h2>
+            <span class="close" onclick="closeModal('quienSomosModal')">&times;</span>
+        </div>
+        <p>DataGo es la solución perfecta para gestionar, optimizar y asegurar la calidad de los datos en tu organización.</p>
+    </div>
+</div>
+
+<div id="porQueElegirModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>¿Por qué elegir DataGo?</h2>
+            <span class="close" onclick="closeModal('porQueElegirModal')">&times;</span>
+        </div>
+        <p>Mejora la eficiencia operativa, reduce errores y garantiza la calidad de tus datos con facilidad.</p>
+    </div>
+</div>
+
+<div id="pasosModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>En 3 sencillos pasos</h2>
+            <span class="close" onclick="closeModal('pasosModal')">&times;</span>
+        </div>
+        <ol>
+            <li>Conecta tu base de datos.</li>
+            <li>Configura reglas de calidad.</li>
+            <li>Recibe alertas y optimiza tus datos.</li>
+        </ol>
+    </div>
+</div>
+
+<div id="clientesModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <span class="close" onclick="closeModal('clientesModal')">&times;</span>
+        </div>
+        <p>“DataGo ha transformado nuestra gestión de datos, mejorando nuestra productividad y calidad de información.”</p>
+        <p>— Cliente A</p>
+    </div>
+</div>
+
+<div id="gobernanzaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Lleva tu Gobernanza de Datos</h2>
+            <span class="close" onclick="closeModal('gobernanzaModal')">&times;</span>
+        </div>
+        <p>Optimiza el control y uso de los datos en tu empresa, mejorando la precisión y eficiencia en todos los procesos.</p>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 DataGo. Todos los derechos reservados. <a href="#">Política de privacidad</a></p>
+</footer>
+
+</body>
+</html>
