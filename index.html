@@ -18,14 +18,14 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         header {
             width: 100%;
             background: #333;
             color: white;
             padding: 10px;
             text-align: center;
-            z-index: 10; /* Para asegurar que el header esté por encima de los planetas */
+            z-index: 10;
         }
 
         footer {
@@ -48,10 +48,10 @@
         }
 
         .solar-system {
-            position: absolute;
-            top: 80px; /* Separación del header */
-            width: 600px;
-            height: 600px;
+            position: relative;
+            top: 10vh;
+            width: 40vw; /* Reducido para pantallas grandes */
+            height: 40vw; /* Reducido para pantallas grandes */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -61,19 +61,19 @@
 
         .planet {
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: 10vw; /* Reducido */
+            height: 10vw; /* Reducido */
             border-radius: 50%;
-            background: linear-gradient(145deg, #b8b8b8, #d0d0d0); /* Plateado */
+            background: linear-gradient(145deg, #b8b8b8, #d0d0d0);
             display: flex;
             justify-content: center;
             align-items: center;
             color: #1c1c1c;
-            font-size: 1.1em;
+            font-size: 1.5vw; /* Reducido */
             box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
-            padding: 5px;
+            padding: 1vw;
             text-align: center;
         }
 
@@ -83,9 +83,9 @@
 
         .sun {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(145deg, #ffd700, #ffcc00); /* Dorado */
+            width: 18vw; /* Reducido */
+            height: 18vw; /* Reducido */
+            background: linear-gradient(145deg, #ffd700, #ffcc00);
             border-radius: 50%;
             box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
             z-index: 10;
@@ -93,17 +93,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5em;
+            font-size: 2.5vw; /* Reducido */
             color: white;
             font-weight: bold;
         }
-
-        /* Planetary orbits (position fixed for non-moving planets) */
-        .planet:nth-child(1) { top: 10%; left: 50%; }
-        .planet:nth-child(2) { top: 25%; left: 75%; }
-        .planet:nth-child(3) { top: 50%; left: 90%; }
-        .planet:nth-child(4) { top: 75%; left: 75%; }
-        .planet:nth-child(5) { top: 90%; left: 50%; }
 
         @keyframes rotate-solar-system {
             0% { transform: rotate(0deg); }
@@ -132,10 +125,10 @@
             box-sizing: border-box;
         }
         .modal-content {
-            background: linear-gradient(145deg, #333, #555); /* Degradado para el modal */
+            background: linear-gradient(145deg, #333, #555);
             padding: 20px;
             border-radius: 10px;
-            width: 60%;
+            width: 80%;
             max-height: 80%;
             overflow-y: auto;
         }
@@ -164,6 +157,62 @@
             background: linear-gradient(145deg, #e6b800, #d6a400);
         }
 
+        /* Media Queries para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .solar-system {
+                width: 60vw;
+                height: 60vw;
+                top: 5vh;
+            }
+
+            .planet {
+                width: 12vw;
+                height: 12vw;
+                font-size: 2.5vw;
+            }
+
+            .sun {
+                width: 20vw;
+                height: 20vw;
+                font-size: 3vw;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
+
+            header {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .solar-system {
+                width: 70vw;
+                height: 70vw;
+                top: 10vh;
+            }
+
+            .planet {
+                width: 15vw;
+                height: 15vw;
+                font-size: 3vw;
+            }
+
+            .sun {
+                width: 25vw;
+                height: 25vw;
+                font-size: 4vw;
+            }
+
+            footer {
+                font-size: 0.7em;
+            }
+
+            header {
+                font-size: 1.1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -179,11 +228,11 @@
     </div>
 
     <!-- Planetas (Secciones) -->
-    <div class="planet" onclick="openModal('quienSomosModal')">¿Qué es?</div>
-    <div class="planet" onclick="openModal('porQueElegirModal')">¿Por qué elegir?</div>
-    <div class="planet" onclick="openModal('pasosModal')">3 Sencillos Pasos</div>
-    <div class="planet" onclick="openModal('clientesModal')">Clientes</div>
-    <div class="planet" onclick="openModal('gobernanzaModal')">Gobernanza</div>
+    <div class="planet" style="transform: rotate(0deg) translateX(20vw) rotate(0deg);" onclick="openModal('quienSomosModal')">¿Qué es?</div>
+    <div class="planet" style="transform: rotate(45deg) translateX(20vw) rotate(-45deg);" onclick="openModal('porQueElegirModal')">¿Por qué elegir?</div>
+    <div class="planet" style="transform: rotate(90deg) translateX(20vw) rotate(-90deg);" onclick="openModal('pasosModal')">3 Sencillos Pasos</div>
+    <div class="planet" style="transform: rotate(135deg) translateX(20vw) rotate(-135deg);" onclick="openModal('clientesModal')">Clientes</div>
+    <div class="planet" style="transform: rotate(180deg) translateX(20vw) rotate(-180deg);" onclick="openModal('gobernanzaModal')">Gobernanza</div>
 </div>
 
 <!-- Modales -->
@@ -221,40 +270,18 @@
     </div>
 </div>
 
-<div id="clientesModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <span class="close" onclick="closeModal('clientesModal')">&times;</span>
-        </div>
-        <p>“DataGo ha transformado nuestra gestión de datos, mejorando nuestra productividad y calidad de información.”</p>
-        <p>— Cliente A</p>
-    </div>
-</div>
-
-<div id="gobernanzaModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Lleva tu Gobernanza de Datos</h2>
-            <span class="close" onclick="closeModal('gobernanzaModal')">&times;</span>
-        </div>
-        <p>Optimiza el control y uso de los datos en tu empresa, mejorando la precisión y eficiencia en todos los procesos.</p>
-    </div>
-</div>
-
 <script>
-    function openModal(id) {
-        document.getElementById(id).style.display = 'flex';
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
     }
 
-    function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
     }
 </script>
 
 <footer>
-    <p>© 2024 DataGo. Todos los derechos reservados.</p>
-    <a href="#">Política de privacidad</a> | <a href="#">Términos y condiciones</a>
+    <p>&copy; 2024 DataGo. Todos los derechos reservados. <a href="#">Política de privacidad</a> | <a href="#">Términos de uso</a></p>
 </footer>
 
 </body>
