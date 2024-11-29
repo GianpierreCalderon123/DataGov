@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -222,6 +225,8 @@
             header {
                 font-size: 1.2em;
             }
+			
+	
         }
 
         @media (max-width: 480px) {
@@ -251,7 +256,65 @@
             header {
                 font-size: 1.1em;
             }
+			
         }
+		
+		
+		
+	
+
+    .container {
+      text-align: center;
+      position: relative;
+      width: 90%; /* Ajustado para que el contenido no se desborde */
+      max-width: 1200px; /* Tamaño máximo */
+      height: auto;
+      background: #ffffff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+   
+
+    .box, .box1 {
+      display: inline-block;
+      padding: 15px;
+      margin: 20px;
+      width: 100px;
+      background-color: #4682B4;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .box1 {
+      width: 200px; /* Ajustado el tamaño */
+    }
+
+    
+
+    .sql {
+      position: absolute;
+      width: 90px;
+      height: 120px;
+      background: linear-gradient(to bottom, #4682B4 0%, #5f7f9b 100%);
+      border-radius: 50%/15%;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+   
+
+ 
+
+  
+		
 </style>
 
 </head>
@@ -346,8 +409,47 @@
         <li>Crear reglas de calidad como mayor, menor, igual o diferente.</li>
         <li>Enviar notificaciones automáticas por correo electrónico.</li>
         <li>Almacenar un historial diario para auditar y mejorar continuamente.</li>
-    </ul>
-    <img src="http://190.116.22.130:2384/ApiImagenesApp/Image/GetImage/datago-scheme" alt="Esquema de DataGo conectado a MSSQL" style="width:100%; height:auto;">
+    </ul>	
+</section>
+
+<section>
+<div class="container">
+    <h1>Arquitectura de Gobernanza de Datos</h1>
+<br>
+    <div id="bd-gobernanza" class="sql sql0">
+      <div>BD Gobernanza</div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div id="backend" class="box">
+      <div>BackEnd GobData</div>
+      <div>(Proyecto de Servicios en C#)</div>
+    </div>
+	<br>
+	<br>
+<div class="sql sql1">
+      BD SQL 1
+    </div>
+<br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+	
+    <div id="frontend" class="box1">
+      <div>FrontEnd GobData</div>
+      <div>(Proyecto Web en C# que consuma servicios)</div>
+      <ul>
+        <li>* Catálogo de Datos,* Políticas de Calidad,Control de Calidad, *Roles de Gobernanza</li>
+      </ul>
+    </div>
+
+    
+  </div>
 </section>
 
 <section>
@@ -420,3 +522,5 @@
         }
     }
 </script>
+
+
