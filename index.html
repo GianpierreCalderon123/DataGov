@@ -5,71 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataGo - Gobernanza de Datos Simplificada</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #1e1e1e;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333; /* Texto en gris oscuro */
+        background-color: #f0f0f0; /* Fondo claro para mejor contraste */
+    }
+    header {
+        background: url('hero-image.jpg') no-repeat center center/cover;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        background-color: #003366;
+    }
+    header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    header p {
+        font-size: 1.2em;
+        margin: 10px 0 20px;
+    }
+    .cta {
+        background: #007BFF;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    section {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #ffffff; /* Fondo blanco para las secciones */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+    section h2 {
+        color: #007BFF;
+    }
+    .benefits, .steps {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .benefit, .step {
+        flex: 1;
+        margin: 10px 0;
+    }
+    .testimonials {
+        background: #f4f4f4;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 20px;
+    }
+    footer a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
 
-        header {
-            width: 100%;
-            background: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            z-index: 10;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer a {
-            color: #ffd700;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .solar-system {
+    /* Sistema Solar */
+     .solar-system {
             position: relative;
             top: 10vh;
-            width: 40vw; /* Reducido para pantallas grandes */
-            height: 40vw; /* Reducido para pantallas grandes */
+            width: 40vw;
+            height: 40vw;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
             animation: rotate-solar-system 30s infinite linear;
         }
-
-        .planet {
+    .sun {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        border-radius: 50%;
+        position: absolute;
+        animation: spin 10s infinite linear;
+    }
+     .planet {
             position: absolute;
-            width: 10vw; /* Reducido */
-            height: 10vw; /* Reducido */
+            width: 10vw;
+            height: 10vw;
             border-radius: 50%;
             background: linear-gradient(145deg, #b8b8b8, #d0d0d0);
             display: flex;
             justify-content: center;
             align-items: center;
             color: #1c1c1c;
-            font-size: 1.5vw; /* Reducido */
+            font-size: 1.5vw;
             box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
@@ -83,8 +121,8 @@
 
         .sun {
             position: absolute;
-            width: 18vw; /* Reducido */
-            height: 18vw; /* Reducido */
+            width: 18vw;
+            height: 18vw;
             background: linear-gradient(145deg, #ffd700, #ffcc00);
             border-radius: 50%;
             box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
@@ -93,7 +131,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5vw; /* Reducido */
+            font-size: 2.5vw;
             color: white;
             font-weight: bold;
         }
@@ -108,7 +146,6 @@
             100% { transform: scale(1.05); }
         }
 
-        /* Estilos para el modal */
         .modal {
             display: none;
             position: fixed;
@@ -124,6 +161,7 @@
             padding: 20px;
             box-sizing: border-box;
         }
+
         .modal-content {
             background: linear-gradient(145deg, #333, #555);
             padding: 20px;
@@ -132,32 +170,31 @@
             max-height: 80%;
             overflow-y: auto;
         }
+
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .close {
             font-size: 1.5em;
             cursor: pointer;
         }
 
-        /* Botones CTA */
-        .cta {
-            background: linear-gradient(145deg, #ffd700, #ffcc00);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
+         .cta {
+        background: #007BFF;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+    }
 
         .cta:hover {
             background: linear-gradient(145deg, #e6b800, #d6a400);
         }
 
-        /* Media Queries para pantallas pequeñas */
         @media (max-width: 768px) {
             .solar-system {
                 width: 60vw;
@@ -213,12 +250,16 @@
                 font-size: 1.1em;
             }
         }
-    </style>
+</style>
+
 </head>
 <body>
 
 <header>
-    <h1>Bienvenidos a DataGo</h1>
+    <h1>DataGo: La Gobernanza de Datos Simplificada</h1>
+    <p>Optimiza, controla y mejora la calidad de tus datos en tiempo real con una solución confiable y eficiente.</p>
+    <a href="https://wa.me/51941607813?text=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20el%20sistema%20de%20gobernanza%20de%20datos%20DataGo." 
+       class="cta" target="_blank">Solicita una Demostración Gratis</a>
 </header>
 
 <div class="solar-system">
@@ -235,14 +276,13 @@
     <div class="planet" style="transform: rotate(180deg) translateX(20vw) rotate(-180deg);" onclick="openModal('gobernanzaModal')">Gobernanza</div>
 </div>
 
-<!-- Modales -->
 <div id="quienSomosModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h2>¿Qué es DataGo?</h2>
             <span class="close" onclick="closeModal('quienSomosModal')">&times;</span>
         </div>
-        <p>DataGo es la solución perfecta para gestionar, optimizar y asegurar la calidad de los datos en tu organización.</p>
+        <p>DataGo es la solución perfecta para gestionar y mejorar la calidad de tus datos en tiempo real.</p>
     </div>
 </div>
 
@@ -252,23 +292,109 @@
             <h2>¿Por qué elegir DataGo?</h2>
             <span class="close" onclick="closeModal('porQueElegirModal')">&times;</span>
         </div>
-        <p>Mejora la eficiencia operativa, reduce errores y garantiza la calidad de tus datos con facilidad.</p>
+        <p>Con DataGo, optimizas tus datos, eliminando redundancias y garantizando su precisión con reglas personalizadas.</p>
     </div>
 </div>
 
 <div id="pasosModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>En 3 sencillos pasos</h2>
+            <h2>3 Sencillos Pasos</h2>
             <span class="close" onclick="closeModal('pasosModal')">&times;</span>
         </div>
         <ol>
-            <li>Conecta tu base de datos.</li>
-            <li>Configura reglas de calidad.</li>
-            <li>Recibe alertas y optimiza tus datos.</li>
+            <li>Conecta tu base de datos MSSQL.</li>
+            <li>Configura las reglas de calidad personalizadas.</li>
+            <li>Visualiza los resultados y recibe notificaciones.</li>
         </ol>
     </div>
 </div>
+
+<div id="clientesModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Clientes</h2>
+            <span class="close" onclick="closeModal('clientesModal')">&times;</span>
+        </div>
+        <p>Conoce algunas empresas que ya confían en DataGo para la gobernanza de sus datos.</p>
+    </div>
+</div>
+
+<div id="gobernanzaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Gobernanza de Datos</h2>
+            <span class="close" onclick="closeModal('gobernanzaModal')">&times;</span>
+        </div>
+        <p>Garantiza la calidad, seguridad y acceso controlado a tus datos en todo momento.</p>
+    </div>
+</div>
+
+<section>
+    <h2>¿Qué es DataGo?</h2>
+    <p>DataGo es un sistema avanzado de gobernanza de datos que conecta directamente a tus bases de datos MSSQL, permitiendo:</p>
+    <ul>
+        <li>Identificar y eliminar redundancias y duplicidades.</li>
+        <li>Crear reglas de calidad como mayor, menor, igual o diferente.</li>
+        <li>Enviar notificaciones automáticas por correo electrónico.</li>
+        <li>Almacenar un historial diario para auditar y mejorar continuamente.</li>
+    </ul>
+    <img src="datago-scheme.jpg" alt="Esquema de DataGo conectado a MSSQL" style="width:100%; height:auto;">
+</section>
+
+<section>
+    <h2>¿Por qué elegir DataGo?</h2>
+    <div class="benefits">
+        <div class="benefit">
+            <h3>Mejora la calidad de tus datos</h3>
+            <p>Detecta inconsistencias y garantiza precisión.</p>
+        </div>
+        <div class="benefit">
+            <h3>Automatización total</h3>
+            <p>Recibe notificaciones y deja que DataGo haga el trabajo por ti.</p>
+        </div>
+        <div class="benefit">
+            <h3>Historial completo</h3>
+            <p>Audita tus datos con registros diarios detallados.</p>
+        </div>
+        <div class="benefit">
+            <h3>Fácil integración</h3>
+            <p>Conéctalo rápidamente a tu base de datos MSSQL.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>En 3 sencillos pasos:</h2>
+    <div class="steps">
+        <div class="step">
+            <h3>1. Conecta tu base de datos MSSQL</h3>
+        </div>
+        <div class="step">
+            <h3>2. Configura reglas de calidad personalizadas</h3>
+        </div>
+        <div class="step">
+            <h3>3. Visualiza resultados y notificaciones</h3>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <blockquote>
+        "Desde que implementamos DataGo, redujimos las duplicidades en un 85% y automatizamos los reportes, ahorrando horas de trabajo semanal."
+        <footer>— Ana López, Gerente de Datos, Empresa Ejemplo</footer>
+    </blockquote>
+</section>
+
+<section>
+    <h2>Lleva tu Gobernanza de Datos al Siguiente Nivel</h2>
+    <p>DataGo está diseñado para empresas como la tuya. Descubre cómo podemos ayudarte a optimizar y gestionar tus datos con facilidad.</p>
+    <div class="buttons">
+        <a href="https://wa.me/51941607813?text=Hola,%20me%20gustaría%20probar%20el%20sistema%20de%20gobernanza%20de%20datos%20DataGo%20de%20manera%20gratuita%20por%207%20días." 
+           class="cta" target="_blank">Prueba Gratuita por 7 Días</a>
+     </div>
+	 </section>
 
 <script>
     function openModal(modalId) {
@@ -278,11 +404,11 @@
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
     }
+
+    // Cerrar el modal al hacer clic fuera de él
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeModal(event.target.id);
+        }
+    }
 </script>
-
-<footer>
-    <p>&copy; 2024 DataGo. Todos los derechos reservados. <a href="#">Política de privacidad</a> | <a href="#">Términos de uso</a></p>
-</footer>
-
-</body>
-</html>
