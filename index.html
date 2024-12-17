@@ -353,6 +353,32 @@
     .video-panel.active {
         display: block;
     }
+    .responsive-video {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .tab-container {
+            flex-wrap: nowrap;
+            gap: 5px;
+            font-size: 0.8em;
+        }
+        .tab {
+            padding: 8px 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .tab-container {
+            flex-direction: column;
+            gap: 5px;
+        }
+        .tab {
+            padding: 6px 12px;
+            font-size: 0.7em;
+        }
+    }
 </style>
 </head>
 <body>
@@ -550,56 +576,56 @@
         <div class="video-content">
             <div id="inicio" class="video-panel active">
                 <h3>Inicio</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Inicio.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="catalogo" class="video-panel">
                 <h3>Catálogo de Datos</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Catalogo de Datos.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="reglas" class="video-panel">
                 <h3>Reglas de Calidad</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Reglas de Calidad.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="alerta" class="video-panel">
                 <h3>Alerta de Calidad</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Alerta de Calidad.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="gestor" class="video-panel">
                 <h3>Gestor de DataSets</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Gestor de DataSets.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="visor" class="video-panel">
                 <h3>Visor de Calidad</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Visor de Calidad.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="usuarios" class="video-panel">
                 <h3>Usuarios</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/Usuarios.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             <div id="dashboard" class="video-panel">
                 <h3>DashBoard de Calidad</h3>
-                <video width="640" height="360" controls>
+                <video class="responsive-video" controls>
                     <source src="C:/Users/gcalderon/Videos/DashBoardCalidad.mkv" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
@@ -650,3 +676,4 @@
         showVideo('inicio');
     });
 </script>
+
